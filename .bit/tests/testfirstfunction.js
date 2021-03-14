@@ -1,4 +1,5 @@
 let uri = undefined
+let data = undefined
 
 try { uri = process.env.HTTP_ENDPOINT }
 catch(e) {
@@ -9,14 +10,12 @@ async function getPage() {
     const resp = await fetch(uri, {
         method: 'GET'
     });
-    var data = resp.json()
-    return data
+    
+    var data = await resp.json()
+    
+    if(data == null){
+        throw new Error("No response... try again!")
+    }
+
+    console.log("Yay! 🎉 Received: ${data}")
 }
-
-var data = await getPage()
-
-if(data == null){
-    throw new Error("No response... try again!")
-}
-
-console.log("Yay! 🎉 Received: ${data}")
