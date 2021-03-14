@@ -6,7 +6,7 @@ catch(e) {
 }
 
 async function getPage() {
-    const resp = await fetch(, {
+    const resp = await fetch(uri, {
         method: 'GET'
     });
     var data = await.json()
