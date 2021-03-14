@@ -9,7 +9,7 @@ async function getPage() {
     const resp = await fetch(uri, {
         method: 'GET'
     });
-    var data = await.json()
+    var data = resp.json()
     return data
 }
 
