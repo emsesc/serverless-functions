@@ -1,4 +1,5 @@
 let uri = undefined
+const fetch = require('node-fetch');
 
 try { uri = process.env.HTTP_ENDPOINT }
 catch(e) {
