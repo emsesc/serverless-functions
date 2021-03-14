@@ -5,11 +5,15 @@ catch(e) {
     throw new Error("You have not added your function url as a secret!");
 }
 
-const resp = await fetch(, {
-    method: 'GET'
-});
+async function getPage() {
+    const resp = await fetch(, {
+        method: 'GET'
+    });
+    var data = await.json()
+    return data
+}
 
-var data = await resp.json()
+var data = await getPage()
 
 if(data == null){
     throw new Error("No response... try again!")
