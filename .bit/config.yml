@@ -17,7 +17,7 @@ steps:
         - type: respond
           with: 1.2-Week 1 Step 2.md
           files: ['README.md', 'js/config.js', 'index.html']
-          scripts: test.hello.js
+          scripts: testfirstfunction.js
     - title: 'Week 1: Week 1 Step 2'
       description: 'Writing a JS script'
       event: workflow_run.completed
