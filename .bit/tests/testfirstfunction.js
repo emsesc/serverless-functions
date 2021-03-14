@@ -19,3 +19,5 @@ async function getPage() {
 
     console.log("Yay! 🎉 Received: ${data}")
 }
+
+getPage();
