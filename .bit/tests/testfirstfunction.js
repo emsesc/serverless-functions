@@ -13,8 +13,9 @@ if (uri == null) {
     });
     var data = await resp.text()
     let test = JSON.stringify(data)
+    
     if (test.length < 3) {
-        console.log("No response... Try again!")
+        throw new Error("No response... Try again!")
     } else {
         console.log("Yay! 🎉 We got: " + JSON.stringify(data))
     }
