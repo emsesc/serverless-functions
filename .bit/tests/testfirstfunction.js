@@ -19,7 +19,7 @@ async function testRequest(uri) {
 (async () => {
     let test = await testRequest(uri)
     if (test.length < 3) {
-        throw new Error("No response... Try again!"))
+        throw new Error("No response... Try again!")
     } else {
         console.log("Yay! 🎉 We got: " + JSON.stringify(data))
     }
