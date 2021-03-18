@@ -7,7 +7,11 @@ if (uri == null) {
     throw new Error("You have not added your function url as a secret!");
 }
 
-fetch(uri)
-  .then(response => response.json())
-  .then(data => console.log(data))
+try {
+    fetch(uri)
+    .then(response => console.log("Success 🎉! We got: " + response.json()))
+} catch (e) {
+    throw new Error("Try again, we didn't get a response.")
+}
+
 
