@@ -15,7 +15,7 @@ if (uri == null) {
     let test = JSON.stringify(data)
     
     if (test.length < 3) {
-        throw new Error("No response... Try again!")
+        Promise.reject(new Error("No response... Try again!"))
     } else {
         console.log("Yay! 🎉 We got: " + JSON.stringify(data))
     }
