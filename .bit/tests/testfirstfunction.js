@@ -1,5 +1,4 @@
 let uri = undefined
-let data = undefined
 const fetch = require('node-fetch');
 
 uri = process.env.HTTP_ENDPOINT
@@ -10,7 +9,7 @@ if (uri == null) {
 
 try {
     fetch(uri)
-    .then(response => console.log("Success 🎉! We got: " + response.json()))
+        .then(response => console.log("Success 🎉! We got: " + response.json()))
 } catch (e) {
     throw new Error("Try again, we didn't get a response.")
 }
