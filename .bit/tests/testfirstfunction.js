@@ -7,22 +7,17 @@ if (uri == null) {
     throw new Error("You have not added your function url as a secret!");
 }
 
-async function testRequest(uri) {
+(async () => {
     const resp = await fetch(uri, {
         method: 'GET'
     });
     var data = await resp.text()
     let test = JSON.stringify(data)
-    return test
-}
-
-(async () => {
-    let test = await testRequest(uri)
+    
     if (test.length < 3) {
-        throw new Error("No response... Try again!")
+        console.log("No response... Try again!")
+        process.exit(1)
     } else {
         console.log("Yay! 🎉 We got: " + JSON.stringify(data))
     }
 })();
-
-
