@@ -8,6 +8,6 @@ if (uri == null) {
 }
 
 fetch(uri)
-  .then(response => response.json())
+//   .then(response => response.json())
   .then(data => console.log(data))
 
