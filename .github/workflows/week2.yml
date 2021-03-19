@@ -23,7 +23,7 @@ jobs:
         
       - name: Step 1
         env:
-          FUNCTION_URL: ${{ FUNCTION_URL }}
+          FUNCTION_URL: ${{ secrets.FUNCTION_URL }}
         run: |
           npm install node-fetch
           npm install fs
