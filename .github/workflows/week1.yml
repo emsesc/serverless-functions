@@ -28,6 +28,7 @@ jobs:
         run: |
           npm install node-fetch
           node .bit/tests/1-test.js
+          
       - name: Step 2
         if: ${{steps.vars.outputs.count == 1 && github.event.head_commit.message != 'Update progress'}}
         run: |
