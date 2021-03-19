@@ -30,7 +30,7 @@ if (uri == null) {
             console.log("No response... Try again!")
             process.exit(1)
         } else {
-            console.log("Yay! 🎉 We got the happiness as: " + result.result[1].faceAttributes.emotion.happiness)
+            console.log("Yay! 🎉 We got the happiness as: " + result.result[0].faceAttributes.emotion.happiness)
     }
   })
 })();
