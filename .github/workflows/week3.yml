@@ -20,4 +20,10 @@ jobs:
       - name: Get Count
         id: vars
         run: echo ::set-output name=count::$(cat ./.bit/.progress)
+        
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          project: ./
+          spec: .bit/tests/5-test.js
 
