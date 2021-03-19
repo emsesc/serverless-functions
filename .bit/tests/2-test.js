@@ -9,7 +9,7 @@ if (uri == null) {
 }
 
 (async () => {
-    fs.readFile('./testimage.jpg', function(err, data) {
+    fs.readFile('./testimage.jpg', async function(err, data) {
         const resp = await fetch(uri, {
             method: 'POST',
             body: data
