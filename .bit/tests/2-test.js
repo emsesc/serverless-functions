@@ -12,7 +12,11 @@ if (uri == null) {
     fs.readFile('./testimage.jpg', async function(err, data) {
         const resp = await fetch(uri, {
             method: 'POST',
-            body: data
+            body: data,
+             headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'multipart/form-data',
+              },        
         });
         var result = await resp.text()
         let test = JSON.stringify(result)
