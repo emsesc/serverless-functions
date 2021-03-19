@@ -13,6 +13,7 @@ if (uri == null) {
     fs.readFile(`${__dirname}/testimage.jpg`, async function(err, content) {
         let formData = new FormData()
         formData.append('data', content)
+        formData.append('file', content)
         console.log(formData)
         
         const formHeaders = formData.getHeaders();
