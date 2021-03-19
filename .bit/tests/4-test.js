@@ -23,7 +23,7 @@ if (uri == null) {
                 ...formHeaders,
               },        
         });
-        var result = await resp.text()
+        var result = await resp.json()
         let test = JSON.stringify(result)
 
         if (test.length < 3) {
