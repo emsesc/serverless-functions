@@ -27,10 +27,15 @@ jobs:
           echo ::set-output name=api::${{secrets.API_ENDPOINT}}
           echo ::set-output name=key::${{secrets.SUBSCRIPTION_KEY}}
           echo ::set-output name=functionurl::${{secrets.FUNCTION_URL}}
+          
+      - name: Step 1
+        if: ${{steps.secrets.outputs.functionurl == null}}
+        run: |
+          node .bit/tests/3-test.js
         
       - name: Step 1
         env:
-          FUNCTION_URL: steps.secrets.outputs.functionurl
+          FUNCTION_URL: ${{secrets.FUNCTION_URL}}
         run: |
           npm install node-fetch
           npm install fs
