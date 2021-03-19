@@ -12,30 +12,32 @@ if (uri == null) {
 (async () => {
     fs.readFile(`${__dirname}/testimage.jpg`, async function(err, content) {
         let formData = new FormData()
-        formData.append('data', content)
-        console.log(formData)
         
-        formData.submit(uri, function(err, res) {
-            // res – response object (http.IncomingMessage)  //
-            console.log(res)
-        });
-                
-//         const resp = await fetch(uri, {
-//             method: 'POST',
-//             body: formData,
-//              headers: {
-//                 'Content-Type': 'application/octet-stream'
-//               },        
-//         });
-//         var result = await resp.text()
-//         let test = JSON.stringify(result)
+        let newContent = {
+            data: content,
+            type: 'image/jepg',
+            filename: 'testimage.jpeg'
+        }
+        
+        formData.append('image', newContent)
+        console.log(formData)
 
-//         if (test.length < 3) {
-//             console.log("No response... Try again!")
-//             process.exit(1)
-//         } else {
-//             console.log("Yay! 🎉 We got: " + test)
-//     }
+        const resp = await fetch(uri, {
+            method: 'POST',
+            body: formData,
+             headers: {
+                'Content-Type': 'application/octet-stream'
+              },        
+        });
+        var result = await resp.text()
+        let test = JSON.stringify(result)
+
+        if (test.length < 3) {
+            console.log("No response... Try again!")
+            process.exit(1)
+        } else {
+            console.log("Yay! 🎉 We got: " + test)
+    }
   })
 })();
 
