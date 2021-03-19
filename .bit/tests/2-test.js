@@ -12,21 +12,16 @@ if (uri == null) {
 (async () => {
     fs.readFile(`${__dirname}/testimage.jpg`, async function(err, content) {
         let formData = new FormData()
-        
-        let newContent = {
-            data: content,
-            type: 'image/jepg',
-            filename: 'testimage.jpeg'
-        }
-        
-        formData.append('image', newContent)
+        formData.append('data', content)
         console.log(formData)
-
+        
+        const formHeaders = formData.getHeaders();
+        
         const resp = await fetch(uri, {
             method: 'POST',
             body: formData,
              headers: {
-                'Content-Type': 'application/octet-stream'
+                ...formHeaders,
               },        
         });
         var result = await resp.text()
@@ -40,5 +35,3 @@ if (uri == null) {
     }
   })
 })();
-
-// test2
