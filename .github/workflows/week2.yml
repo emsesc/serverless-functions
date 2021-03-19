@@ -26,4 +26,5 @@ jobs:
           FUNCTION_URL: ${{ FUNCTION_URL }}
         run: |
           npm install node-fetch
+          npm install fs
           node .bit/tests/2-test.js
