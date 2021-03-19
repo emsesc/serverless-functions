@@ -12,7 +12,7 @@ if (uri == null) {
 (async () => {
     fs.readFile(`${__dirname}/testimage.jpg`, async function(err, content) {
         let formData = new FormData()
-        formData.append('file', {data: content})
+        formData.append('file', fs.readFileSync(`${__dirname}/testimage.jpg`), {data: content})
         console.log(formData)
         const resp = await fetch(uri, {
             method: 'POST',
