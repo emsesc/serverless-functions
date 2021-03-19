@@ -20,4 +20,39 @@ jobs:
       - name: Get Count
         id: vars
         run: echo ::set-output name=count::$(cat ./.bit/.progress)
-
+        
+      - name: Secrets
+        id: secrets
+        run: |
+          echo ::set-output name=api::${{secrets.API_ENDPOINT}}
+          echo ::set-output name=key::${{secrets.SUBSCRIPTION_KEY}}
+          echo ::set-output name=functionurl::${{secrets.FUNCTION_URL}}
+          
+      - name: Step 1
+        if: ${{steps.secrets.outputs.functionurl == null}}
+        run: |
+          node .bit/tests/3-test.js
+        
+      - name: Step 1
+        env:
+          FUNCTION_URL: ${{secrets.FUNCTION_URL}}
+        run: |
+          npm install node-fetch
+          npm install fs
+          npm install form-data
+          node .bit/tests/2-test.js
+      
+      - name: Step 1
+        if: ${{steps.secrets.outputs.api == null && steps.secrets.outputs.key == null}}
+        run: |
+          node .bit/tests/3-test.js
+       
+          
+      - name: Step 1
+        env:
+          FUNCTION_URL: ${{ secrets.FUNCTION_URL }}
+        run: |
+          npm install node-fetch
+          npm install fs
+          npm install form-data
+          node .bit/tests/4-test.js
