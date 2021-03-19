@@ -34,3 +34,5 @@ jobs:
         env:
           API_ENDPOINT: ${{ secrets.API_ENDPOINT }}
           SUBSCRIPTION_KEY: ${{ secrets.SUBSCRIPTION_KEY }}
+        run: |
+          node .bit/tests/3-test.js
