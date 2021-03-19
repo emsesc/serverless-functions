@@ -27,4 +27,5 @@ jobs:
         run: |
           npm install node-fetch
           npm install fs
+          npm install form-data
           node .bit/tests/2-test.js
