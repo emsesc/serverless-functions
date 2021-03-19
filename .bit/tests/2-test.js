@@ -35,7 +35,7 @@ if (uri == null) {
 //             process.exit(1)
 //         } else {
 //             console.log("Yay! 🎉 We got: " + test)
-    }
+//     }
   })
 })();
 
