@@ -12,16 +12,16 @@ if (uri == null) {
 (async () => {
     fs.readFile(`${__dirname}/testimage.jpg`, async function(err, content) {
         let formData = new FormData()
-        formData.append('filename', "testimage.jpg")
-        formData.append('type', 'image/jpeg')
         formData.append('data', content)
         console.log(formData)
+        
+        const formHeaders = FormData.getHeaders();
+        
         const resp = await fetch(uri, {
             method: 'POST',
             body: formData,
              headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'multipart/form-data',
+                ...formHeaders,
               },        
         });
         var result = await resp.text()
