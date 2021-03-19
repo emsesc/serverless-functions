@@ -22,6 +22,12 @@ jobs:
         run: echo ::set-output name=count::$(cat ./.bit/.progress)
         
       - name: Step 1
+        id: secrets
+        run: |
+          echo ::set-output name=api::${{secrets.API_ENDPOINT}}
+          echo ::set-output name=key::${{secrets.SUBSCRIPTION_KEY}}
+        
+      - name: Step 1
         env:
           FUNCTION_URL: ${{ secrets.FUNCTION_URL }}
         run: |
@@ -31,8 +37,16 @@ jobs:
           node .bit/tests/2-test.js
       
       - name: Step 1
-        env:
-          API_ENDPOINT: ${{ secrets.API_ENDPOINT }}
-          SUBSCRIPTION_KEY: ${{ secrets.SUBSCRIPTION_KEY }}
+        if: ${{steps.secrets.outputs.api == null && steps.secrets.outputs.key == null}}
         run: |
           node .bit/tests/3-test.js
+       
+          
+      - name: Step 1
+        env:
+          FUNCTION_URL: ${{ secrets.FUNCTION_URL }}
+        run: |
+          npm install node-fetch
+          npm install fs
+          npm install form-data
+          node .bit/tests/4-test.js
