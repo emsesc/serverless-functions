@@ -24,13 +24,12 @@ jobs:
       - name: Step 1
         if: ${{steps.vars.outputs.count == 0 && github.event.head_commit.message != 'Update progress'}}
         env:
-          SUPER_SECRET: ${{ secrets.HTTP_ENDPOINT }}
+          HTTP_ENDPOINT: ${{ secrets.HTTP_ENDPOINT }}
         run: |
           npm install node-fetch
-          node .bit/tests/testfirstfunction.js
-
+          node .bit/tests/1-test.js
+          
       - name: Step 2
         if: ${{steps.vars.outputs.count == 1 && github.event.head_commit.message != 'Update progress'}}
         run: |
           node .bit/tests/test2.hello.js
-
