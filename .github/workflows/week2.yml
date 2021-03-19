@@ -29,3 +29,8 @@ jobs:
           npm install fs
           npm install form-data
           node .bit/tests/2-test.js
+      
+      - name: Step 1
+        env:
+          API_ENDPOINT: ${{ secrets.API_ENDPOINT }}
+          SUBSCRIPTION_KEY: ${{ secrets.SUBSCRIPTION_KEY }}
