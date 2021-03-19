@@ -23,14 +23,14 @@ if (uri == null) {
                 ...formHeaders,
               },        
         });
-        var result = await resp.text()
+        var result = await resp.json()
         let test = JSON.stringify(result)
 
         if (test.length < 3) {
             console.log("No response... Try again!")
             process.exit(1)
         } else {
-            console.log("Yay! 🎉 We got: " + JSON.stringify(test))
+            console.log("Yay! 🎉 We got: " + test)
     }
   })
 })();
