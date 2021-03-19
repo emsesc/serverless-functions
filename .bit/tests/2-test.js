@@ -14,14 +14,12 @@ if (uri == null) {
         let formData = new FormData()
         formData.append('data', content)
         console.log(formData)
-        
-        const formHeaders = FormData.getHeaders();
-        
+                
         const resp = await fetch(uri, {
             method: 'POST',
             body: formData,
              headers: {
-                ...formHeaders,
+                'Content-Type': 'application/octet-stream'
               },        
         });
         var result = await resp.text()
