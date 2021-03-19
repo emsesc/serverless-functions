@@ -13,7 +13,6 @@ if (uri == null) {
     fs.readFile(`${__dirname}/testimage.jpg`, async function(err, content) {
         let formData = new FormData()
         formData.append('data', content, {filename: "testimage.jpeg", type: "image/jpeg", data: content})
-        console.log(formData)
         
         const formHeaders = formData.getHeaders();
         
@@ -31,7 +30,7 @@ if (uri == null) {
             console.log("No response... Try again!")
             process.exit(1)
         } else {
-            console.log("Yay! 🎉 We got: " + test)
+            console.log("Yay! 🎉 We got: " + JSON.stringify(test))
     }
   })
 })();
