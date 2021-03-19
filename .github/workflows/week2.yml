@@ -21,15 +21,16 @@ jobs:
         id: vars
         run: echo ::set-output name=count::$(cat ./.bit/.progress)
         
-      - name: Step 1
+      - name: Secrets
         id: secrets
         run: |
           echo ::set-output name=api::${{secrets.API_ENDPOINT}}
           echo ::set-output name=key::${{secrets.SUBSCRIPTION_KEY}}
+          echo ::set-output name=functionurl::${{secrets.FUNCTION_URL}}
         
       - name: Step 1
         env:
-          FUNCTION_URL: ${{ secrets.FUNCTION_URL }}
+          FUNCTION_URL: steps.secrets.outputs.functionurl
         run: |
           npm install node-fetch
           npm install fs
