@@ -19,10 +19,11 @@ jobs:
 
       - name: Get Count
         id: vars
-        run: echo ::set-output name=count::$(cat ./.bit/.progress)
+        run: |
+          echo ::set-output name=count::$(cat ./.bit/.progress)
+          npm install
         
       - name: Cypress run
-        run: npm install
         uses: cypress-io/github-action@v2
         with:
           project: ./
