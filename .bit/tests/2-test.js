@@ -14,22 +14,27 @@ if (uri == null) {
         let formData = new FormData()
         formData.append('data', content)
         console.log(formData)
-                
-        const resp = await fetch(uri, {
-            method: 'POST',
-            body: formData,
-             headers: {
-                'Content-Type': 'application/octet-stream'
-              },        
+        
+        formData.submit(uri, function(err, res) {
+            // res – response object (http.IncomingMessage)  //
+            console.log(res)
         });
-        var result = await resp.text()
-        let test = JSON.stringify(result)
+                
+//         const resp = await fetch(uri, {
+//             method: 'POST',
+//             body: formData,
+//              headers: {
+//                 'Content-Type': 'application/octet-stream'
+//               },        
+//         });
+//         var result = await resp.text()
+//         let test = JSON.stringify(result)
 
-        if (test.length < 3) {
-            console.log("No response... Try again!")
-            process.exit(1)
-        } else {
-            console.log("Yay! 🎉 We got: " + test)
+//         if (test.length < 3) {
+//             console.log("No response... Try again!")
+//             process.exit(1)
+//         } else {
+//             console.log("Yay! 🎉 We got: " + test)
     }
   })
 })();
