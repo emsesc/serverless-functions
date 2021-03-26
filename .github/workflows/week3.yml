@@ -21,7 +21,6 @@ jobs:
         id: vars
         run: |
           echo ::set-output name=count::$(cat ./.bit/.progress)
-          npm install
         
       - name: Cypress run
         uses: cypress-io/github-action@v2
