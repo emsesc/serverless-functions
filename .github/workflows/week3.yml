@@ -25,5 +25,5 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          spec: .bit/tests/5-test.js
+          spec: cypress/integration/spec.js
 
